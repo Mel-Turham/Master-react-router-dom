@@ -4,9 +4,10 @@ const Contact = () => {
 	const contact = {
 		first: '',
 		last: 'Mel Turham',
-		avatar: 'https://placekitten.com/g/200/200',
-		twitter: 'your_handle',
-		notes: 'Developper javaScript based in Cameroon let connect',
+		avatar: '../../public/singe.png',
+		twitter: 'melturham',
+		notes:
+			'  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet alias velit corporis facilis, voluptatum rem labore sequi consequatur',
 		favorite: true,
 	};
 	return (
@@ -35,7 +36,7 @@ const Contact = () => {
 					</p>
 				)}
 
-				{contact.notes && <p>{contact.notes}</p>}
+				{contact.notes && <p>{contact.notes.substring(0, 255) + '...'}</p>}
 
 				<div>
 					<Form action='edit'>
