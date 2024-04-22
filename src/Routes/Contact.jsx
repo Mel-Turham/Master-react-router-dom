@@ -1,15 +1,24 @@
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
+import { getContact } from '../Contacts';
 import PropTypes from 'prop-types';
-const Contact = () => {
-	const contact = {
-		first: '',
-		last: 'Mel Turham',
-		avatar: '../../public/singe.png',
-		twitter: 'melturham',
-		notes:
-			'  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet alias velit corporis facilis, voluptatum rem labore sequi consequatur',
-		favorite: true,
-	};
+
+export const loader = async ({ params }) => {
+	const contact = await getContact(params.contactId);
+	return { contact };
+};
+export default function Contact() {
+	const { contact } = useLoaderData();
+
+
+	// const contact = {
+	// 	first: 'Your',
+	// 	last: 'Name',
+	// 	avatar: 'https://images.app.goo.gl/ruiurBkkFedC8GEK8',
+	// 	twitter: 'your_handle',
+	// 	notes: 'Some notes',
+	// 	favorite: true,
+	// };
+
 	return (
 		<div id='contact'>
 			<div>
@@ -36,7 +45,7 @@ const Contact = () => {
 					</p>
 				)}
 
-				{contact.notes && <p>{contact.notes.substring(0, 255) + '...'}</p>}
+				{contact.notes && <p>{contact.notes}</p>}
 
 				<div>
 					<Form action='edit'>
@@ -57,7 +66,7 @@ const Contact = () => {
 			</div>
 		</div>
 	);
-};
+}
 
 function Favorite({ contact }) {
 	// yes, this is a `let` for later
@@ -78,4 +87,3 @@ function Favorite({ contact }) {
 Favorite.propTypes = {
 	contact: PropTypes.object,
 };
-export default Contact;

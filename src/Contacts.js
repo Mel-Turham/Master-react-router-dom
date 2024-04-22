@@ -29,6 +29,9 @@ export async function getContact(id) {
   return contact ?? null;
 }
 
+
+
+
 export async function updateContact(id, updates) {
   await fakeNetwork();
   let contacts = await localforage.getItem("contacts");
@@ -38,6 +41,8 @@ export async function updateContact(id, updates) {
   await set(contacts);
   return contact;
 }
+
+
 
 export async function deleteContact(id) {
   let contacts = await localforage.getItem("contacts");
