@@ -9,7 +9,6 @@ export const loader = async ({ params }) => {
 export default function Contact() {
 	const { contact } = useLoaderData();
 
-
 	// const contact = {
 	// 	first: 'Your',
 	// 	last: 'Name',
@@ -22,7 +21,11 @@ export default function Contact() {
 	return (
 		<div id='contact'>
 			<div>
-				<img key={contact.avatar} src={contact.avatar || null} />
+				<img
+					key={contact.avatar}
+					src={contact.avatar || 'https://images.app.goo.gl/ruiurBkkFedC8GEK8'}
+					alt='image not found '
+				/>
 			</div>
 
 			<div>
